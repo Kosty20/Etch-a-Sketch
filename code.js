@@ -1,18 +1,11 @@
 const container = document.querySelector('#container');
 const btn = document.querySelector(".grid-dimension");
 const reset = document.querySelector('.reset');
+let boxes = document.querySelectorAll('#container>div');
 
 //16x16 grid when the page loads
 let x = 16;
-for (let i = 1; i <= x ** 2; i++) {
-    container.append(document.createElement('div'));
-}
-const boxes = document.querySelectorAll('#container>div');
-boxes.forEach(box => {
-    box.addEventListener('mouseover', () => {
-        box.style.backgroundColor = 'red';
-    })
-})
+addDiv(x);
 
 //Change the grid format
 btn.addEventListener('click', () => {
@@ -27,7 +20,6 @@ btn.addEventListener('click', () => {
 })
 
 function addDiv(x) {
-
     for (let div of boxes) {
         div.remove();
     }
