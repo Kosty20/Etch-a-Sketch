@@ -1,3 +1,7 @@
+const board = document.querySelector('#container');
+
+
+/*
 const container = document.querySelector('#container');
 const btn = document.querySelector(".grid-dimension");
 const reset = document.querySelector('.reset');
@@ -19,11 +23,14 @@ btn.addEventListener('click', () => {
     }
 })
 
-function addDiv(x) {
+function clearDivs(){
     for (let div of boxes) {
         div.remove();
     }
+}
 
+function addDiv(x) {
+    clearDivs();
     container.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${x}, 1fr)`;
     for (let i = 1; i <= x ** 2; i++) {
@@ -44,3 +51,5 @@ reset.addEventListener('click', () => {
         box.style.backgroundColor = 'white'
     }
 })
+
+*/
