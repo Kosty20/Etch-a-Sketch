@@ -1,55 +1,75 @@
 const board = document.querySelector('#container');
+const colorInput = document.querySelector('#color');
+const clearBtn = document.querySelector('.clear');
+const rainbowBtn = document.querySelector('.rainbow');
+const sizeSlider = document.querySelector('#size');
+const sizeLabel = document.querySelector('.grid-size');
+let bits = [];
+
+let gridSize = sizeSlider.value;
+let color = colorInput.value;
 
 
-/*
-const container = document.querySelector('#container');
-const btn = document.querySelector(".grid-dimension");
-const reset = document.querySelector('.reset');
-let boxes = document.querySelectorAll('#container>div');
+addBit(gridSize);
 
-//16x16 grid when the page loads
-let x = 16;
-addDiv(x);
 
-//Change the grid format
-btn.addEventListener('click', () => {
-    x = +prompt(`Set your drawing board (Max 64x64)`);
-    if (typeof x !== 'number' || x < 0 || x > 64) {
-        alert(`Please set a number between 0 and 100`)
-        x = undefined;
-    }
-    if (x !== 0) {
-        addDiv(x);
-    }
+sizeSlider.addEventListener('input', (e) => {
+    sizeLabel.innerText = `${e.target.value} x ${e.target.value}`;
+    gridSize = e.target.value;
+    addBit(gridSize);
+});
+
+
+colorInput.addEventListener('input', (e) => {
+    color = e.target.value;
 })
 
-function clearDivs(){
-    for (let div of boxes) {
-        div.remove();
-    }
-}
 
-function addDiv(x) {
-    clearDivs();
-    container.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
-    container.style.gridTemplateRows = `repeat(${x}, 1fr)`;
-    for (let i = 1; i <= x ** 2; i++) {
+function addBit(size) {
+    deleteBits();
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    for (let i = 1; i <= size ** 2; i++) {
         container.append(document.createElement('div'));
     }
-    boxes = document.querySelectorAll('#container>div');
-
-    boxes.forEach(box => {
-        box.addEventListener('mouseover', () => {
-            box.style.backgroundColor = 'red';
-        })
-    })
+    bits = document.querySelectorAll('#container>div');//gathers all the bits in a variable
+    colorBit();
 }
 
-//Clears all divs by reseting the backgroundColor
-reset.addEventListener('click', () => {
-    for(box of boxes){
-        box.style.backgroundColor = 'white'
-    }
-})
 
-*/
+function deleteBits(){
+    for(bit of bits){
+        bit.remove();
+    }
+}
+
+
+function colorBit(){
+    bits.forEach(bit => {
+        bit.addEventListener('mouseover', () => {
+            bit.style.backgroundColor = `${rainbowBits()}`;
+        });
+    });
+}
+
+function clearBits() {
+    for(bit of bits){
+        bit.style.backgroundColor = 'white';
+    }
+}
+
+
+function rainbowBits() {
+    return `rgb(${randomNr(256)}, ${randomNr(256)}, ${randomNr(256)})`;
+}
+
+
+function randomNr(num) {
+    return Math.floor(Math.random() * num);
+}
+
+
+clearBtn.addEventListener('click', clearBits);
+
+
+

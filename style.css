@@ -10,13 +10,23 @@ body{
     background-color: black;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu{
+    height: 600px;
+}
+
+.menu> *{
+    display: block;
 }
 
 #container{
     border: 3px solid white;
     aspect-ratio: 1;
-    width: 600px;
-    margin: auto;
+    min-width: 600px;
 
     display: grid;
     grid-template-columns: repeat(16, 1fr);
