@@ -10,19 +10,32 @@
     <script src="code.js" defer></script>
 </head>
 <body>
-    <div class="menu">
-        <button class="enable-shade">Shade</button>
-        <button class="enable-rainbow">Rainbow</button>
-        <label for="color">
-            <button class="enable-color">Color</button><br>
-            <input type="color" id="color">
-        </label>
-        <button class="clear" title="Clear">Clear</button>
-        <label for="size">
-            <div class="grid-size">16 x 16</div>
-            <input type="range" id="size" min="1" max="64" value="16">
-        </label>
-    </div>
-    <div id="container"></div>
+    <header>
+        <h1>Etch MY Sketch</h1>
+    </header>
+    <main class="container">
+        <div class="menu">
+            <div class="space-box pens">
+                <label for="color">
+                    <input type="color" id="color"><br>
+                </label>
+                <button class="enable-color active">Color</button>
+                <button class="enable-shade">Shade</button>
+                <button class="enable-rainbow">Rainbow</button>
+            </div>
+            <div class="space-box">
+                <div class="grid-size">16 x 16</div>
+                <label for="size" class="size-label">
+                    <input type="range" id="size" min="1" max="64" value="16">
+                </label>
+                <button class="clear" title="Clear">Clear</button>
+            </div>
+            <div class="space-box"></div>
+        </div>
+        <div class="border">
+            <div id="board"></div>
+        </div>
+    </main>
+    <footer>Built by Kosty</footer>
 </body>
 </html>

@@ -1,8 +1,9 @@
-const board = document.querySelector('#container');
+const board = document.querySelector('#board');
 let bits = [];
 const colorInput = document.querySelector('#color');
 const sizeSlider = document.querySelector('#size');
 const sizeLabel = document.querySelector('.grid-size');
+const btns = document.querySelectorAll('.pens>button');
 
 const clearBtn = document.querySelector('.clear');
 const rainbowBtn = document.querySelector('.enable-rainbow');
@@ -24,7 +25,7 @@ colorInput.addEventListener('input', (e) => {
 let pen = 'color';
 colorBtn.onclick = () => {pen = 'color'};
 shadeBtn.onclick = () => {pen = 'shade'};
-rainbowBtn.onclick = () => {pen = 'rainbow'}
+rainbowBtn.onclick = () => {pen = 'rainbow'};
 
 let mouseDown = false;
 document.body.onmousedown = () => {mouseDown = true};
@@ -36,12 +37,12 @@ addBit(gridSize);
 
 function addBit(size) {
     deleteBits();
-    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     for (let i = 1; i <= size * size; i++) {
-        container.append(document.createElement('div'));
+        board.append(document.createElement('div'));
     }
-    bits = document.querySelectorAll('#container>div');//gathers all the bits in a variable
+    bits = document.querySelectorAll('#board>div');//gathers all the bits in a variable
     colorBit();
 }
 
@@ -86,7 +87,14 @@ function randomNr(num) {
     return Math.floor(Math.random() * num);
 }
 
-
+btns.forEach(btnI => {
+    btnI.addEventListener('click', () => {
+        for(btnII of btns){
+            btnII.classList.remove('active');
+        }
+        btnI.classList.add('active');
+    })
+})
 clearBtn.addEventListener('click', clearBits);
 
 
