@@ -6,8 +6,12 @@
     user-select: none;
 }
 
+:root{
+    --base-color:darkslateblue;
+}
+
 body{
-    background-color: black;
+    background-color:var(--base-color);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -24,18 +28,17 @@ body{
 }
 
 #container{
-    border: 3px solid white;
-    aspect-ratio: 1;
-    min-width: 600px;
-
+    min-width: 500px;
+    min-height: 500px;
+    background-color: white;
+    border: 5px solid white;
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
 }
 
 #container>div{
     aspect-ratio: 1;
     background-color: white;
+    transition: filter .1s;
 }
 
 button{
