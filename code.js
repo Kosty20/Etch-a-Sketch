@@ -3,7 +3,7 @@ let bits = [];
 const colorInput = document.querySelector('#color');
 const sizeSlider = document.querySelector('#size');
 const sizeLabel = document.querySelector('.grid-size');
-const btns = document.querySelectorAll('.pens>button');
+const btns = document.querySelectorAll('.pens button');
 
 const clearBtn = document.querySelector('.clear');
 const rainbowBtn = document.querySelector('.enable-rainbow');
